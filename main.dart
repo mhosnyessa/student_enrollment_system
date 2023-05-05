@@ -1,6 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gui_db/data_repository.dart';
+import 'package:gui_db/program_detail_screen/bloc/program_detail_bloc.dart';
 import 'package:gui_db/user_repository.dart';
 import './home_screen/view/home_screen.dart';
 import './login_signup_screen/view/login_signup_screen.dart';
@@ -31,12 +33,22 @@ class MyApp extends StatelessWidget {
               // UserRepository(apiBaseUrl: 'your_api_base_url_here'),
               UserRepository(),
         ),
+        RepositoryProvider<DataRepository>(
+          create: (context) =>
+              // UserRepository(apiBaseUrl: 'your_api_base_url_here'),
+              DataRepository(),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
             create: (context) => LoginSignupBloc(
                 authenticationRepository: authenticationRepository,
+                userRepository: context.read<UserRepository>()),
+          ),
+          BlocProvider(
+            create: (context) => ProgramDetailBloc(
+                dataRepository: context.read<DataRepository>(),
                 userRepository: context.read<UserRepository>()),
           ),
         ],
@@ -111,7 +123,7 @@ class MaterialMe extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Your App Name',
-      initialRoute: '/home',
+      initialRoute: '/login_signup',
       routes: {
         '/home': (context) => HomeScreen(),
         // TODO: laterr!

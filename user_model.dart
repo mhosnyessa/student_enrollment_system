@@ -8,19 +8,18 @@ class UserModel {
     required this.name,
     required this.email,
   });
-
-  factory UserModel.fromJson(Map<String, dynamic> json) {
-    return UserModel(
-      id: json['id'],
-      name: json['firstName'],
-      email: json['email'],
-    );
-  }
-  factory UserModel.empty() {
-    return UserModel(
+  static UserModel empty =  UserModel(
       id: "",
       name: '',
       email: '',
+    );
+
+
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    return UserModel(
+      id: json['id'].toString(),
+      name: json['name'],
+      email: json['email'],
     );
   }
 
