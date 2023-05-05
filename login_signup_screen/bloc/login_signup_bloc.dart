@@ -15,10 +15,17 @@ class LoginSignupBloc extends Bloc<LoginSignupEvent, LoginSignupState> {
       required UserRepository userRepository})
       : _authenticationRepository = authenticationRepository,
         _userRepository = userRepository,
-        super(LoginSignupInitial());
+        super(LoginSignupInitial()) {
+    on<LoginSignupEvent>(_mapwrapper);
+  }
 
-  @override
-  Stream<LoginSignupState> mapEventToState(LoginSignupEvent event) async* {
+  FutureOr<void> _mapwrapper(
+      LoginSignupEvent event, Emitter<LoginSignupState> emit) {
+    mapEventToState(event, emit);
+  }
+
+  Stream<LoginSignupState> mapEventToState(
+      LoginSignupEvent event, Emitter<LoginSignupState> emit) async* {
     if (event is LoginButtonPressed) {
       yield LoginSignupLoading();
       try {
@@ -33,12 +40,12 @@ class LoginSignupBloc extends Bloc<LoginSignupEvent, LoginSignupState> {
     } else if (event is SignupButtonPressed) {
       yield LoginSignupLoading();
       try {
-        final UserModel user =
-            await _authenticationRepository.signup(
+        final UserModel user = await _authenticationRepository.signup(
           email: event.email,
           password: event.password,
         );
-        await _userRepository.createNewUser(user, email: '', fullName: '', password: '', phoneNumber: '');
+        await _userRepository.createNewUser(user,
+            email: '', fullName: '', password: '', phoneNumber: '');
         yield LoginSignupSuccess(user: user);
       } catch (error) {
         yield LoginSignupFailure(error: error.toString());
