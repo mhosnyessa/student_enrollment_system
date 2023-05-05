@@ -9,13 +9,6 @@ class AuthenticationRepository {
 
   Future<UserModel> login(
       {required String email, required String password}) async {
-    //  return UserModel(
-    //   email: 'mhosny67710@gmail.com',
-    //   firstName: "muhammed",
-    //   lastName: 'Hosny',
-    //   id: '23',
-    //   programIds: [],
-    // );
     final url = Uri.parse('$baseUrl/login/$email/$password');
     final response = await http.get(
       url,

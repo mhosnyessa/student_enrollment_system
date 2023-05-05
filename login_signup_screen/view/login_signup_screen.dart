@@ -41,13 +41,12 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
               content: Text(state.error),
             );
             ScaffoldMessenger.of(context).showSnackBar(s);
-          }else if (state is LoginSignupSuccess) {
+          } else if (state is LoginSignupSuccess) {
             SnackBar s = SnackBar(
               content: Text("logged in successfully!"),
             );
             ScaffoldMessenger.of(context).showSnackBar(s);
           }
-
         },
         builder: (context, state) {
           return Padding(
@@ -63,14 +62,18 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                           labelText: 'Name',
                         ),
                         keyboardType: TextInputType.emailAddress,
-                  onChanged: (_){ setState(() { }); },
+                        onChanged: (_) {
+                          setState(() {});
+                        },
                       ),
                 TextField(
                   controller: _emailController,
                   decoration: InputDecoration(
                     labelText: 'Email',
                   ),
-                  onChanged: (_){ setState(() { }); },
+                  onChanged: (_) {
+                    setState(() {});
+                  },
                   keyboardType: TextInputType.emailAddress,
                 ),
                 const SizedBox(height: 16),
@@ -79,27 +82,42 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                   decoration: InputDecoration(
                     labelText: 'Password',
                   ),
-                  onChanged: (_){ setState(() { }); },
+                  onChanged: (_) {
+                    setState(() {});
+                  },
                   obscureText: true,
                 ),
+                // TextField(
+                //   controller: _passwordController,
+                //   decoration: InputDecoration(
+                //     labelText: 'Repeat Password',
+                //   ),
+                //   onChanged: (_) {
+                //     setState(() {});
+                //   },
+                //   obscureText: true,
+                // ),
                 const SizedBox(height: 16),
                 ElevatedButton(
-                  onPressed: _emailController.text == '' || _passwordController.text == '' ? null: () {
-                    if (_isLoginForm) {
-                      bloc.add(LoginButtonPressed(
-                        email: _emailController.text,
-                        // email: "john.smith@example.com",
-                        password: _passwordController.text,
-                        // password: "password123",
-                      ));
-                    } else {
-                      bloc.add(SignupButtonPressed(
-                        name: _nameController.text,
-                        email: _emailController.text,
-                        password: _passwordController.text,
-                      ));
-                    }
-                  },
+                  onPressed: _emailController.text == '' ||
+                          _passwordController.text == ''
+                      ? null
+                      : () {
+                          if (_isLoginForm) {
+                            bloc.add(LoginButtonPressed(
+                              email: _emailController.text,
+                              // email: "john.smith@example.com",
+                              password: _passwordController.text,
+                              // password: "password123",
+                            ));
+                          } else {
+                            bloc.add(SignupButtonPressed(
+                              name: _nameController.text,
+                              email: _emailController.text,
+                              password: _passwordController.text,
+                            ));
+                          }
+                        },
                   child: state != LoginSignupLoading()
                       ? Text(_isLoginForm ? 'Login' : 'Sign up')
                       : const CircularProgressIndicator(
