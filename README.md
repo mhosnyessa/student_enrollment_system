@@ -51,7 +51,7 @@ Here's a diagram representing the architecture and data flow of the application:
                       |                  |
                       |         +--------v---------+
                       |         |                  |
-                      +-------->|   Blog Provider  |
+                      +-------->|   BLoC Provider  |
                                 |                  |
                                 +--------+---------+
                                          |
@@ -75,7 +75,7 @@ Here's a diagram representing the architecture and data flow of the application:
                                          |
                                 +--------v---------+
                                 |                  |
-                                | MySQL Database  |
+                                |  MySQL Database  |
                                 |                  |
                                 +------------------+
 
