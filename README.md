@@ -1,3 +1,7 @@
+
+
+
+
 # Screenshots from the app
 <div style="display: flex; align-items: center;">
   <img src="https://github.com/favicon.ico" width="48">
@@ -7,6 +11,7 @@
 <img src="https://user-images.githubusercontent.com/65831561/236697444-69d854c7-2ca7-450c-89cc-9c2a5588d082.jpg" alt="Screenshot 4" width="300">
 
 </div>
+
 # Project Overview and Architecture
 
 ## Purpose
