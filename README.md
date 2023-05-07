@@ -1,10 +1,12 @@
 # Screenshots from the app
-
+<div style="display: flex; align-items: center;">
+  <img src="https://github.com/favicon.ico" width="48">
 <img src="https://user-images.githubusercontent.com/65831561/236697232-8fe2c985-6170-4e69-9e77-5ac402860726.jpg" alt="Screenshot 1" width="300">
 <img src="https://user-images.githubusercontent.com/65831561/236697388-36a04285-973c-4a4b-933a-336f5a012c1b.jpg" alt="Screenshot 2" width="300">
 <img src="https://user-images.githubusercontent.com/65831561/236697440-47bcc2cc-0029-412c-8b81-159b5e2eca42.jpg" alt="Screenshot 3" width="300">
 <img src="https://user-images.githubusercontent.com/65831561/236697444-69d854c7-2ca7-450c-89cc-9c2a5588d082.jpg" alt="Screenshot 4" width="300">
 
+</div>
 # Project Overview and Architecture
 
 ## Purpose
